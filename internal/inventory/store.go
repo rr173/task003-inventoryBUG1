@@ -75,9 +75,9 @@ func New() *Store {
 
 func trim(s string) string { return strings.TrimSpace(s) }
 
-// lowStockOf 判断商品是否处于低库存：阈值已设置且库存不超过阈值。
+// lowStockOf 判断商品是否处于低库存：threshold set and stock strictly below threshold。
 func lowStockOf(p *Product) bool {
-	return p.Threshold > 0 && p.Stock <= p.Threshold
+	return p.Threshold > 0 && p.Stock < p.Threshold
 }
 
 // statusOf 依据停售状态与库存派生商品状态。
